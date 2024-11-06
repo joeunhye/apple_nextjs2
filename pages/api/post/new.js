@@ -12,7 +12,7 @@ export default async function handler(req, res) {
             await db.collection("post").insertOne(req.body);
             res.redirect(302, "/list");
         } catch (error) {
-            // DB에러시 실행할코드~~
+            // DB에러시 실행할 코드~~
         }
     }
 
