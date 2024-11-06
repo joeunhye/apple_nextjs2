@@ -14,7 +14,7 @@ async function List() {
             {result.map((data) => (
                 <div className="list-item" key={data._id}>
                     <Link href={`/detail/${data._id}`}>{data.title}</Link>
-                    <Link href={`/edit/${data._id}`}>📝</Link>
+                    <Link href={`/edit/${data._id}`}> [Edit]</Link>
                     <DetailLink />
                     <p>{data.content}</p>
                     <p>1월 1일</p>
