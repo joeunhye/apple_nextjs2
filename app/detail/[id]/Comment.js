@@ -4,8 +4,13 @@ import { useEffect, useState } from "react";
 
 function Comment({ boardId }) {
 	const [comment, setComment] = useState("");
+
 	useEffect(() => {
-		fetch();
+		fetch("/api/comment/list")
+			.then(response => response.json())
+			.then(result => {
+				console.log(result);
+			});
 	}, []);
 
 	return (
