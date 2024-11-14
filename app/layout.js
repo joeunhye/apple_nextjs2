@@ -5,6 +5,8 @@ import LoginBtn from "./LoginBtn";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "/pages/api/auth/[...nextauth]";
 import LogOutBtn from "./LogOutBtn";
+import { cookies } from "next/headers";
+import DarkMode from "./DarkMode";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -24,10 +26,12 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
     const session = await getServerSession(authOptions);
+    let res = cookies().get("mode");
+    console.log(res.value);
 
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+            <body className={`${res?.value == "dark" ? "dark-mode" : ""} ${geistSans.variable} ${geistMono.variable}`}>
                 <div className="navbar">
                     <Link href="/" className="logo">
                         Appleforum
@@ -42,6 +46,8 @@ export default async function RootLayout({ children }) {
                     ) : (
                         <LoginBtn />
                     )}
+
+                    <DarkMode />
                 </div>
                 {children}
             </body>
