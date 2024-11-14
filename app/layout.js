@@ -27,7 +27,6 @@ export const metadata = {
 export default async function RootLayout({ children }) {
     const session = await getServerSession(authOptions);
     let res = cookies().get("mode");
-    console.log(res.value);
 
     return (
         <html lang="en">
